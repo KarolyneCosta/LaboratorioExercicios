@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LaboratorioDaKarolyne.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,8 @@ namespace LaboratorioDaKarolyne.Controllers
         // GET: Cidade
         public ActionResult Index()
         {
-            return View();
+            IList<Cidade> listaDeCidades = new Cidade().GetAll();
+            return View(listaDeCidades);
         }
     }
 }

@@ -10,7 +10,7 @@ namespace LaboratorioDaKarolyne.Repository.DAO
 {
     public class Conexao
     {
-        private SqlConnection Conectar()
+        private static SqlConnection Conectar()
         {
             //Para poder ter acesso ao BD
             string stringConexao = ConfigurationManager.ConnectionStrings["ConexaoLaboratorio"].ConnectionString;
@@ -22,7 +22,7 @@ namespace LaboratorioDaKarolyne.Repository.DAO
             return conexao;
         }
 
-        public int ExecutarCrud(SqlCommand comando)
+        public static int ExecutarCrud(SqlCommand comando)
         {
             SqlConnection con = Conectar();
             comando.Connection = con;
@@ -33,7 +33,7 @@ namespace LaboratorioDaKarolyne.Repository.DAO
             //Toda vez que o comando ExecutarCrud for chamado ele se conectará ao banco para ter acesso as informações do banco, podendo assim executar o update, delete, insert e busca.            
         }
 
-        public SqlDataReader ExecutarSelect(SqlCommand comando)
+        public static SqlDataReader ExecutarSelect(SqlCommand comando)
         {
             SqlConnection con = Conectar();
             comando.Connection = con;
