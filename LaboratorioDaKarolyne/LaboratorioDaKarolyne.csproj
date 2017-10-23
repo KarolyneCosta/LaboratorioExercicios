@@ -130,6 +130,10 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Cidade\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Cidade\Novo.cshtml" />
+    <Content Include="Views\Cidade\Editar.cshtml" />
+    <Content Include="Views\Cidade\Excluir.cshtml" />
+    <Content Include="Views\Cidade\ViewEdit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

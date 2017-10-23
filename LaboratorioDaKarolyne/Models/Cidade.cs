@@ -19,5 +19,32 @@ namespace LaboratorioDaKarolyne.Models
         {
             return new CidadeRepository().SelecionarTodas();
         }
+
+        public void Save()
+        {
+            CidadeRepository cidadeRep = new CidadeRepository();
+            if (IdCidade == 0)
+            {
+                cidadeRep.Salvar(this);
+            }
+            else
+            {
+                cidadeRep.Alterar(this);
+            }
+        }
+
+        public Cidade FindById(int id)
+        {
+            CidadeRepository objCidadeRep = new CidadeRepository();
+            Cidade objCidade = new Cidade();
+            objCidade = objCidadeRep.BuscarPorID(id);
+            return objCidade;
+        }
+        
+        public void Deletar(int id)
+        {
+            CidadeRepository objCidadeRep = new CidadeRepository();
+            objCidadeRep.Deletar(id);
+        }
     }
 }

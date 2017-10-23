@@ -4,9 +4,9 @@
 }
 
 <h3> Cidades </h3>
-
+<hr />
 <p>
-    @Html.ActionLink("Criar uma Nova Cidade", "Novo", null, new { @class = "", });
+    @Html.ActionLink(" Criar uma Nova Cidade ", "Novo", null, new { @class = "", })
 </p>
 
 <table class="table table-striped table-hover">
@@ -23,7 +23,10 @@
             <tr>
                 <td>@Html.DisplayFor(i => item.EnumEstado)</td>
                 <td>@Html.DisplayFor(i => item.Nome)</td>
-                <td></td>
+                <td>
+                    <a href="/Fornecedor/Editar?id=@item.IdCidade" class=" btn btn-warning">Editar</a>
+                    <a href="/Fornecedor/Deletar?id=@item.IdCidade" class=" btn btn-danger">Deletar</a>
+                </td>
             </tr>
         }
     </tbody>
