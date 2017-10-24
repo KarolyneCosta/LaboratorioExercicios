@@ -133,7 +133,6 @@
     <Content Include="Views\Cidade\Novo.cshtml" />
     <Content Include="Views\Cidade\Editar.cshtml" />
     <Content Include="Views\Cidade\Excluir.cshtml" />
-    <Content Include="Views\Cidade\ViewEdit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

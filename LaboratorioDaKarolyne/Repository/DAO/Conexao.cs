@@ -26,7 +26,7 @@ namespace LaboratorioDaKarolyne.Repository.DAO
         {
             SqlConnection con = Conectar();
             comando.Connection = con;
-            int id = (int)comando.ExecuteScalar();
+            int id = Convert.ToInt32(comando.ExecuteScalar());
             con.Close();
 
             return id;

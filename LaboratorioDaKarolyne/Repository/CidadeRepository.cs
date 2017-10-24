@@ -26,8 +26,7 @@ namespace LaboratorioDaKarolyne.Repository
                     Cidade c = new Cidade();
                     c.IdCidade = (int)dr["cidadeId"];
                     c.Nome = (string)dr["nome"];
-                    //c.EnumEstado = Enum.GetValues(typeof (Estado), (string)dr["estado"]);
-                    //c.EnumEstado = (Estado)Enum.Parse(typeof(Estado), (string)dr["estado"]);
+                    c.EnumEstado = (Estado)dr["estado"];
 
                     cidades.Add(c);
                 }
@@ -56,9 +55,9 @@ namespace LaboratorioDaKarolyne.Repository
             if (dr.HasRows)
             {
                 dr.Read();
-                objCidade.IdCidade = (int)dr["IdCidade"];
+                objCidade.IdCidade = Convert.ToInt32(dr["cidadeId"]);
                 objCidade.Nome = dr["Nome"].ToString();
-                //objCidade.EnumEstado = (string)dr["EnumEstado"]; 
+                objCidade.EnumEstado = (Estado)dr["estado"];
             }
             else
             {
@@ -83,7 +82,8 @@ namespace LaboratorioDaKarolyne.Repository
         {
             SqlCommand comando = new SqlCommand();
             comando.CommandType = CommandType.Text;
-            comando.CommandText = "INSERT INTO Cidades (nome, estado) VALUES (@nome, @cidade)";
+            comando.CommandText = "INSERT INTO Cidades (nome, estado) VALUES (@nome, @estado);" +
+                "SELECT CAST(scope_identity() as int);";
 
             comando.Parameters.AddWithValue("@nome", objCidade.Nome);
             comando.Parameters.AddWithValue("@estado", objCidade.EnumEstado);
@@ -95,7 +95,7 @@ namespace LaboratorioDaKarolyne.Repository
         {
             SqlCommand comando = new SqlCommand();
             comando.CommandType = CommandType.Text;
-            comando.CommandText = " UPDATE Cidades SET nome=@nome, enumEstado=@enumEstado WHERE cidadeId=@id";
+            comando.CommandText = " UPDATE Cidades SET nome=@nome, estado=@enumEstado WHERE cidadeId=@id";
 
             comando.Parameters.AddWithValue("@nome", objCidade.Nome);
             comando.Parameters.AddWithValue("@enumEstado", objCidade.EnumEstado);

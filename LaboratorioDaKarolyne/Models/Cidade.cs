@@ -22,6 +22,7 @@ namespace LaboratorioDaKarolyne.Models
 
         public void Save()
         {
+            //new CidadeRepository().Salvar();
             CidadeRepository cidadeRep = new CidadeRepository();
             if (IdCidade == 0)
             {
@@ -40,11 +41,11 @@ namespace LaboratorioDaKarolyne.Models
             objCidade = objCidadeRep.BuscarPorID(id);
             return objCidade;
         }
-        
-        public void Deletar(int id)
+
+        public void Deletar(Cidade c)
         {
             CidadeRepository objCidadeRep = new CidadeRepository();
-            objCidadeRep.Deletar(id);
+            objCidadeRep.Deletar(c);
         }
     }
 }

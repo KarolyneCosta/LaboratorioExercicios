@@ -18,8 +18,7 @@ namespace LaboratorioDaKarolyne.Controllers
 
         public ActionResult Novo()
         {
-            Cidade c = new Cidade();
-            return View(c);
+            return View();
         }
 
         [HttpPost]
@@ -45,7 +44,7 @@ namespace LaboratorioDaKarolyne.Controllers
         [HttpPost]
         public ActionResult Excluir(Cidade objCidade)
         {
-            objCidade.Deletar(objCidade.IdCidade);
+            objCidade.Deletar(objCidade);
             return RedirectToAction("Index");
         }
 
