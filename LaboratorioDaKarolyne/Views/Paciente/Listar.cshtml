@@ -1,0 +1,39 @@
+﻿@model LaboratorioDaKarolyne.Models.Paciente
+@{
+    ViewBag.Title = "Listar Pacientes";
+}
+
+<h2>Listar Pacientes</h2>
+
+<hr />
+<div class="row">
+    <div class="col-md-offset-11">
+        <p>
+            @Html.ActionLink(" ", "Novo", null, new { @class = " glyphicon glyphicon-plus btn btn-primary", })
+        </p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-3">
+            <div class="form-group">
+                <input type="text" class="form-control" id="nomePaciente" placeholder="Digite o nome do paciente...">                
+            </div>
+    </div>
+    <div class="col-md-offset-1">
+        <button type="submit" class="btn btn-primary"><i class=" glyphicon glyphicon-search"></i></button>
+    </div>
+</div>
+<div class="row" id="buscaPaciente">
+
+</div>
+
+@*@section scripts{
+        <script>
+        $("#EnumEstado").on("change", function () {
+            var estadoView = $(this).val();
+
+            $("#cidadeEstado").load('@Url.Action("IndexComFiltro", "Cidade")', { estado: estadoView })
+        });
+        </script>
+    }*@

@@ -47,5 +47,11 @@ namespace LaboratorioDaKarolyne.Models
             CidadeRepository objCidadeRep = new CidadeRepository();
             objCidadeRep.Deletar(c);
         }
+
+        public IList<Cidade> BuscarCidade(Estado estado)
+        {
+            CidadeRepository cidadeRepository = new CidadeRepository();
+            return cidadeRepository.BuscaCidade(estado);            
+        }
     }
 }

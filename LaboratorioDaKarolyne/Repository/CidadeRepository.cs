@@ -66,7 +66,6 @@ namespace LaboratorioDaKarolyne.Repository
             return objCidade;
         }
 
-
         public void Deletar(Cidade objCidade)
         {
             SqlCommand comando = new SqlCommand();
@@ -103,5 +102,35 @@ namespace LaboratorioDaKarolyne.Repository
 
             Conexao.ExecutarCrud(comando);
         }
+
+        public IList<Cidade> BuscaCidade(Estado estado)
+        {
+            SqlCommand comando = new SqlCommand();
+            comando.CommandType = CommandType.Text;
+            comando.CommandText = "SELECT * From Cidades Where estado = @estado";
+
+            comando.Parameters.AddWithValue("@estado", estado);
+            SqlDataReader dr = Conexao.ExecutarSelect(comando);            
+
+            IList<Cidade> cidades = new List<Cidade>();
+            if (dr.HasRows)
+            {
+                while (dr.Read())
+                {
+                    Cidade c = new Cidade();
+                    c.IdCidade = (int)dr["cidadeId"];
+                    c.Nome = (string)dr["nome"];
+                    c.EnumEstado = (Estado)dr["estado"];
+
+                    cidades.Add(c);
+                }
+            }
+            else
+            {
+                cidades = null;
+            }
+            return cidades;
+        }
+
     }
 }

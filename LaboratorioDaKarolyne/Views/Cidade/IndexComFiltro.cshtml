@@ -1,0 +1,31 @@
+﻿@model LaboratorioDaKarolyne.Models.Cidade
+@{
+    ViewBag.Title = "Index";
+}
+
+<h3> Cidades </h3>
+<hr />
+<div class="col-md-offset-11">
+    <p>        
+        @Html.ActionLink(" ", "Novo", null, new { @class = " glyphicon glyphicon-plus btn btn-primary", })
+    </p>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.EnumEstado)
+    @Html.EnumDropDownListFor(model => model.EnumEstado, new { @class = "form-control" })
+</div>
+<hr />
+<div class="row" id="cidadeEstado">
+
+</div>
+
+@section scripts{
+<script>
+    $("#EnumEstado").on("change", function () {
+        var estadoView = $(this).val();
+
+        $("#cidadeEstado").load('@Url.Action("IndexComFiltro", "Cidade")', { estado: estadoView })
+    });
+    </script>    
+}

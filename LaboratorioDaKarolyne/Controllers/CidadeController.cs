@@ -60,5 +60,18 @@ namespace LaboratorioDaKarolyne.Controllers
             objCidade.Save();
             return RedirectToAction("Index");
         }
+
+        //PartialView
+        public ActionResult IndexComFiltro()
+        {
+            return View();
+        }
+
+       [HttpPost]
+        public ActionResult IndexComFiltro(Estado estado)
+        {
+            IList<Cidade> cidade = new Cidade().BuscarCidade(estado);
+            return PartialView("_ListarCidade", cidade);
+        }
     }
 }
