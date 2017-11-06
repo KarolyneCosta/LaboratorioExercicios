@@ -138,6 +138,7 @@
     <Content Include="Views\Cidade\IndexComFiltro.cshtml" />
     <Content Include="Views\Cidade\_ListarCidade.cshtml" />
     <Content Include="Views\Paciente\Listar.cshtml" />
+    <Content Include="Views\Paciente\Novo.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

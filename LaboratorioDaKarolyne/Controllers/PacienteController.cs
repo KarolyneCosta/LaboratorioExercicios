@@ -15,12 +15,12 @@ namespace LaboratorioDaKarolyne.Controllers
         }
 
         [HttpPost]
-        public ActionResult Novo()
+        public ActionResult Novo(Paciente objPaciente)
         {
            Paciente paciente = new Paciente().Save();
            return RedirectToAction("Listar");
         }
-        // GET: Paciente
+
         public ActionResult Listar()
         {
             return View();

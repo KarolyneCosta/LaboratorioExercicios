@@ -13,15 +13,14 @@ namespace LaboratorioDaKarolyne.Models
         public DateTime DataNascimento { get; set; }
         [Display(Name ="Plano de Saúde")]
         public PlanoSaude ObjPlanoSaude { get; set; }
+        [Display(Name = "Convênio")]
+        public TipoConveniado EnumTipoConveniado { get; set; }
+        [Display(Name = "Cidade")]
+        public Cidade ObjCidade { get; set; }
 
         internal Paciente Save()
         {
             throw new NotImplementedException();
         }
-
-        [Display(Name = "Convênio")]
-        public TipoConveniado EnumTipoConveniado { get; set; }
-        [Display(Name = "Cidade")]
-        public Cidade ObjCidade { get; set; }
     }
 }

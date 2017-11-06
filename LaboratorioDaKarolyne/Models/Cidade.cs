@@ -15,6 +15,7 @@ namespace LaboratorioDaKarolyne.Models
         [DisplayName("Estado")]
         public Estado EnumEstado { get; set; }
 
+
         public IList<Cidade> GetAll()
         {
             return new CidadeRepository().SelecionarTodas();
