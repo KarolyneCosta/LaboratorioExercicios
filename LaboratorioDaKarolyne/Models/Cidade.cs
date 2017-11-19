@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -10,6 +11,7 @@ namespace LaboratorioDaKarolyne.Models
     public class Cidade
     {
         public int IdCidade { get; set; }
+        [Display(Name="Cidade")]
         public string Nome { get; set; }
 
         [DisplayName("Estado")]
@@ -35,12 +37,9 @@ namespace LaboratorioDaKarolyne.Models
             }
         }
 
-        public Cidade FindById(int id)
-        {
-            CidadeRepository objCidadeRep = new CidadeRepository();
-            Cidade objCidade = new Cidade();
-            objCidade = objCidadeRep.BuscarPorID(id);
-            return objCidade;
+        public static Cidade FindById(int id)
+        {             
+            return new CidadeRepository().BuscarPorID(id);
         }
 
         public void Deletar(Cidade c)

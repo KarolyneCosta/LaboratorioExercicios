@@ -121,6 +121,7 @@
     <Compile Include="Repository\CidadeRepository.cs" />
     <Compile Include="Repository\DAO\Conexao.cs" />
     <Compile Include="Repository\PacienteRepository.cs" />
+    <Compile Include="Repository\PlanoSaudeRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -130,15 +131,17 @@
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Cidade\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Cidade\Novo.cshtml" />
     <Content Include="Views\Cidade\Editar.cshtml" />
     <Content Include="Views\Cidade\Excluir.cshtml" />
-    <Content Include="Views\Cidade\IndexComFiltro.cshtml" />
+    <Content Include="Views\Cidade\Listar.cshtml" />
     <Content Include="Views\Cidade\_ListarCidade.cshtml" />
     <Content Include="Views\Paciente\Listar.cshtml" />
     <Content Include="Views\Paciente\Novo.cshtml" />
+    <Content Include="Views\Paciente\_ListarPacientes.cshtml" />
+    <Content Include="Views\Paciente\Editar.cshtml" />
+    <Content Include="Views\Cidade\_ListarCidadePorEstado.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

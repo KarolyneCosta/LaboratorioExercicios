@@ -1,0 +1,32 @@
+﻿@model LaboratorioDaKarolyne.Models.Paciente
+@{
+    ViewBag.Title = "Editar Paciente";
+}
+
+<h3>Editar Paciente</h3>
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.IdPaciente)
+    <div class="form-group">
+        @Html.DisplayNameFor(model => model.Nome)
+        @Html.EditorFor(model => model.Nome, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.DisplayNameFor(model => model.EnumTipoConveniado)
+        @Html.EnumDropDownListFor(model => model.EnumTipoConveniado, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.DisplayNameFor(model => model.ObjCidade)
+        @Html.DropDownListFor(model => model.ObjCidade.IdCidade, ViewBag.Planos as SelectList, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.DisplayNameFor(model => model.ObjPlanoSaude)
+        @Html.DropDownListFor(model => model.ObjPlanoSaude.IdPlanoSaude, ViewBag.Planos as SelectList, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-1">
+            <input type="submit" value="Salvar" class="btn btn-success" />
+            @Html.ActionLink("Cancelar", "Index", "", new { @class = "btn btn-default" })
+        </div>
+    </div>
+}

@@ -9,18 +9,11 @@ namespace LaboratorioDaKarolyne.Controllers
 {
     public class CidadeController : Controller
     {
-        // GET: Cidade
-        public ActionResult Index()
-        {
-            IList<Cidade> listaDeCidades = new Cidade().GetAll();
-            return View(listaDeCidades);
-        }
-
+       [HttpGet]
         public ActionResult Novo()
         {
             return View();
         }
-
         [HttpPost]
         public ActionResult Novo(Cidade c)
         {
@@ -35,12 +28,11 @@ namespace LaboratorioDaKarolyne.Controllers
             }
         }
 
+        [HttpGet]
         public ActionResult Excluir(int id)
         {
-            Cidade objCidade = new Cidade().FindById(id);
-            return View(objCidade);
+            return View(Cidade.FindById(id));
         }
-
         [HttpPost]
         public ActionResult Excluir(Cidade objCidade)
         {
@@ -48,12 +40,11 @@ namespace LaboratorioDaKarolyne.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpGet]
         public ActionResult Editar(int id)
         {
-            Cidade objCidade = new Cidade().FindById(id);
-            return View(objCidade);
+            return View(Cidade.FindById(id));
         }
-
         [HttpPost]
         public ActionResult Editar(Cidade objCidade)
         {
@@ -62,16 +53,22 @@ namespace LaboratorioDaKarolyne.Controllers
         }
 
         //PartialView
-        public ActionResult IndexComFiltro()
+        public ActionResult Listar()
         {
             return View();
         }
-
        [HttpPost]
-        public ActionResult IndexComFiltro(Estado estado)
+        public ActionResult Listar(Estado estado)
         {
-            IList<Cidade> cidade = new Cidade().BuscarCidade(estado);
-            return PartialView("_ListarCidade", cidade);
+            IList<Cidade> cidades = new Cidade().BuscarCidade(estado);
+            return PartialView("_ListarCidade", cidades);
+        }
+
+        [HttpPost]
+        public ActionResult ListarCidadePorEstado(Estado estado)
+        {
+            IList<Cidade> cidades = new Cidade().BuscarCidade(estado);
+            return PartialView("_ListarCidadePorEstado", cidades);
         }
     }
 }

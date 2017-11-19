@@ -1,0 +1,25 @@
+﻿@model IEnumerable<LaboratorioDaKarolyne.Models.Paciente>
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Nome)</th>
+            <th>@Html.DisplayNameFor(model => model.DataNascimento)</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(i => item.Nome)</td>
+                <td>@Html.DisplayFor(i => item.DataNascimento)</td>
+                <td>
+                    @Html.ActionLink(" ", "Editar", new { id = item.IdPaciente }, new { @class = "glyphicon glyphicon-pencil btn btn-warning" })
+                    @Html.ActionLink(" ", "Excluir", new { id = item.IdPaciente }, new { @class = "glyphicon glyphicon-trash btn btn-danger" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

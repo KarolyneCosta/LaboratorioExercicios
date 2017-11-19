@@ -37,7 +37,6 @@ namespace LaboratorioDaKarolyne.Repository
             }
             return cidades;
         }
-
         public Cidade BuscarPorID(int id)
         {
             Cidade objCidade = new Cidade();

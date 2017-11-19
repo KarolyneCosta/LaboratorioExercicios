@@ -1,65 +1,51 @@
-﻿@model IEnumerable<LaboratorioDaKarolyne.Models.Paciente>
+﻿@model LaboratorioDaKarolyne.Models.Paciente
 @{
-    ViewBag.Title = "Listar Pacientes";
+    ViewBag.Title = "Buscar Pacientes";
 }
 
 <h2>Listar Pacientes</h2>
 
 <hr />
 <div class="row">
-    <div class="col-md-offset-11">
+    <div>
         <p>
             @Html.ActionLink(" ", "Novo", null, new { @class = " glyphicon glyphicon-plus btn btn-primary", })
         </p>
     </div>
 </div>
-@using (Html.BeginForm("post"))
-{
-    <div class="row">
-        <div class="col-md-3">
-            <input type="text" name="nomeBusca" id="nomeBusca" class="form-control" />
-        </div>
-        <div class="col-lg-offset-3">
-            <button type="submit" class="btn btn-primary"><i class=" glyphicon glyphicon-search"></i></button>
-        </div>
-    </div>
-    <br />
-}
-<!--
-@*<table class="table-hover table-striped">
-    <thead>
-        <tr>
-            <th>@Html.DisplayNameFor(model=>model.Nome)</th>
-            <td>@Html.DisplayNameFor(model=>model.DataNascimento)</td>
-            <td></td>
-        </tr>
-    </thead>
-    <tbody>        
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>@Html.DisplayFor(i=>item.Nome)</td>
-                    <td>                        
-                        @Html.ActionLink(" ", "Editar", new { id = item.IdPaciente }, new { @class = "glyphicon glyphicon-pencil btn btn-warning" })
-                        @Html.ActionLink(" ", "Excluir", new { id = item.IdPaciente }, new { @class = "glyphicon glyphicon-trash btn btn-danger" })
-                    </td>
-                </tr>
-            }
-    </tbody>
-</table>*@
-    -->
-<!--
-<div class="row" id="buscaPaciente">
+<div class="row">
+    <div class="col-md-3">
+        <h4>Pesquisa por Nome</h4>
+        <div class="input-group">
+            <input type="text" id="nomeBusca" name="nomeBusca" class="form-control" placeholder="Insira um nome...">
+            <span class="input-group-btn">
+                <button class="btn btn-primary" id="buscar" onclick="click" type="button"><i class="glyphicon glyphicon-search"></i></button>
+            </span>
+        </div><!-- /input-group -->
+    </div><!-- /.col-lg-6 -->
+    <div class="col-md-6">
+        <h4>Pesquisa por Plano</h4>
+        <div class="form-group">
+            @Html.DropDownListFor(model => model.ObjPlanoSaude.IdPlanoSaude, ViewBag.Planos as SelectList, "Escolha um Plano...", new { @class = "form-control" })
+        </div><!-- /input-group -->
+    </div><!-- /.col-md-6 -->
+</div>
+<div id="exibirPacientes">
 
 </div>
 
-@*@section scripts{
-        <script>
-        $("#EnumEstado").on("change", function () {
-            var estadoView = $(this).val();
+@section scripts{
+    <script>
+        $("#ObjPlanoSaude_IdPlanoSaude").on("change", function () {
+        var resultado = $(this).val();
 
-            $("#cidadeEstado").load('@Url.Action("IndexComFiltro", "Cidade")', { estado: estadoView })
+        $("#exibirPacientes").load('@Url.Action("Listar", "Paciente")', { plano: resultado })
         });
-        </script>
-    }*@
-    -->
+
+        $("#buscar").on("click", function () {
+        var resultado = $("#nomeBusca").val();
+
+        $("#exibirPacientes").load('@Url.Action("Listar", "Paciente")', { nome: resultado })
+    });
+    </script>
+}

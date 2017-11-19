@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LaboratorioDaKarolyne.Repository;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -18,9 +19,18 @@ namespace LaboratorioDaKarolyne.Models
         [Display(Name = "Cidade")]
         public Cidade ObjCidade { get; set; }
 
-        internal Paciente Save()
+        //internal Paciente Save()
+        //{
+        //    return new PacienteRepository().Save(this);
+        //}
+
+        public IList<Paciente> GetPlano(int plano)
+        {            
+            return new PacienteRepository().BuscaPorPlano(plano);
+        }
+        public IList<Paciente> GetByName(string nomeBusca)
         {
-            throw new NotImplementedException();
+            return new PacienteRepository().BuscaPorNome(nomeBusca);
         }
     }
 }
